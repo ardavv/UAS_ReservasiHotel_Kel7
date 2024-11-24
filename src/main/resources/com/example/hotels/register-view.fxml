@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="bgRegist" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="533.0" prefWidth="754.0" styleClass="bgAuth" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotels.RegisterController">
+    <children>
+        <HBox fx:id="containerRegister" alignment="CENTER" layoutX="82.0" layoutY="74.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="466.0" style="-fx-background-color: #FFF8EE; -fx-background-radius: 20px;" AnchorPane.bottomAnchor="76.39999999999998" AnchorPane.leftAnchor="82.0" AnchorPane.rightAnchor="82.0" AnchorPane.topAnchor="74.0">
+            <children>
+                <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="383.0" prefWidth="363.0" style="-fx-background-color: #FF9C10; -fx-background-radius: 20px 0px 0px 20px;">
+                    <children>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                            <VBox.margin>
+                                <Insets />
+                            </VBox.margin>
+                            <image>
+                                <Image url="@image/SideFt.png" />
+                            </image>
+                        </ImageView>
+                        <Label text="Laravel Hotel">
+                            <VBox.margin>
+                                <Insets top="15.0" />
+                            </VBox.margin>
+                            <font>
+                                <Font name="System Bold" size="24.0" />
+                            </font>
+                        </Label>
+                        <Label text="Nikmati Kenyamanan dengan Mudah" />
+                    </children>
+                </VBox>
+                <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="383.0" prefWidth="286.0">
+                    <children>
+                        <Label text="Register">
+                            <VBox.margin>
+                                <Insets />
+                            </VBox.margin>
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font>
+                        </Label>
+                        <Label text="Username">
+                            <VBox.margin>
+                                <Insets right="150.0" top="5.0" />
+                            </VBox.margin>
+                        </Label>
+                        <TextField fx:id="usernameField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="204.0" promptText="Masukan Username" style="-fx-border-color: #FF9C10; -fx-border-radius: 8px; -fx-background-radius: 8px;">
+                            <VBox.margin>
+                                <Insets top="5.0" />
+                            </VBox.margin>
+                        </TextField>
+                        <Label text="Email">
+                            <VBox.margin>
+                                <Insets right="170.0" top="10.0" />
+                            </VBox.margin>
+                        </Label>
+                        <TextField fx:id="emailField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="204.0" promptText="Masukan Email" style="-fx-border-color: #FF9C10; -fx-border-radius: 8px; -fx-background-radius: 8px;">
+                            <VBox.margin>
+                                <Insets top="5.0" />
+                            </VBox.margin>
+                        </TextField>
+                        <Label text="Kata Sandi">
+                            <VBox.margin>
+                                <Insets right="150.0" top="10.0" />
+                            </VBox.margin>
+                        </Label>
+                        <PasswordField fx:id="passwordField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="204.0" promptText="Masukan Kata Sandi" style="-fx-border-color: #FF9C10; -fx-border-radius: 8px; -fx-background-radius: 8px;">
+                            <VBox.margin>
+                                <Insets top="5.0" />
+                            </VBox.margin>
+                        </PasswordField>
+                        <Label text="Konfirmasi Sandi">
+                            <VBox.margin>
+                                <Insets right="120.0" top="10.0" />
+                            </VBox.margin>
+                        </Label>
+                        <PasswordField fx:id="confirmPasswordField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="204.0" promptText="Konfirmasi Kata Sandi" style="-fx-border-color: #FF9C10; -fx-border-radius: 8px; -fx-background-radius: 8px;">
+                            <VBox.margin>
+                                <Insets top="5.0" />
+                            </VBox.margin>
+                        </PasswordField>
+                        <Label fx:id="errorHandle" style="-fx-text-fill: red;" text=" ">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin></Label>
+
+                        <Button fx:id="registerButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onRegisterButtonClick" prefHeight="26.0" prefWidth="200.0" style="-fx-background-color: FF9C10; -fx-background-radius: 8;" text="Register">
+                            <VBox.margin>
+                                <Insets top="10.0" />
+                            </VBox.margin>
+                        </Button>
+                  <HBox alignment="CENTER" prefHeight="37.0" prefWidth="286.0">
+                     <children>
+                        <Label prefHeight="2.0" prefWidth="184.0" text="Jika sudah memiliki akun silahkan" />
+                         <Hyperlink onAction="#handleHyperlinkToLogin" styleClass="warna" stylesheets="@style.css" text="Login" />
+                     </children>
+                  </HBox>
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
+    </children>
+</AnchorPane>

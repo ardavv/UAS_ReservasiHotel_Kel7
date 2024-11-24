@@ -1,0 +1,8 @@
+.bgAuth{
+    -fx-background-image: url("image/LoginBg.png");
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+}
+.warna{
+    -fx-text-fill: #FF9C10;
+}
