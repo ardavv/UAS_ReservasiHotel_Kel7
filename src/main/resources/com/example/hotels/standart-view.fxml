@@ -26,9 +26,6 @@
                             </font>
                         </Label>
                     </children>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
                 </HBox>
                 <Label text="Pilih ruangan">
                     <font>
@@ -38,6 +35,10 @@
                         <Insets top="20.0" />
                     </VBox.margin>
                 </Label>
+
+                <!-- Warning Label -->
+                <Label fx:id="warningLabel" style="-fx-text-fill: red;" text="" />
+
                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="754.0">
                     <children>
                         <VBox fx:id="C301" alignment="CENTER" onMouseClicked="#onC301Clicked" prefHeight="87.0" prefWidth="203.0" style="-fx-background-color: white; -fx-background-radius: 20;" styleClass="bayangan" stylesheets="@style.css">
@@ -50,11 +51,11 @@
                                         <Font name="System Bold" size="18.0" />
                                     </font>
                                 </Label>
-                        <Label text="Max 1-2 Orang" />
+                                <Label text="Max 1-2 Orang" />
                             </children>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
                         </VBox>
                         <VBox fx:id="C302" alignment="CENTER" onMouseClicked="#onC302Clicked" prefHeight="87.0" prefWidth="203.0" style="-fx-background-color: white; -fx-background-radius: 20;" styleClass="bayangan" stylesheets="@style.css">
                             <children>
@@ -63,14 +64,14 @@
                                         <Font name="System Bold" size="18.0" />
                                     </font>
                                 </Label>
-                        <Label text="Max 1-2 Orang" />
+                                <Label text="Max 1-2 Orang" />
                             </children>
-                     <HBox.margin>
-                        <Insets right="30.0" />
-                     </HBox.margin>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
+                            <HBox.margin>
+                                <Insets right="30.0" />
+                            </HBox.margin>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
                         </VBox>
                         <VBox fx:id="C303" alignment="CENTER" onMouseClicked="#onC303Clicked" prefHeight="87.0" prefWidth="203.0" style="-fx-background-color: white; -fx-background-radius: 20;" styleClass="bayangan" stylesheets="@style.css">
                             <children>
@@ -79,11 +80,11 @@
                                         <Font name="System Bold" size="18.0" />
                                     </font>
                                 </Label>
-                        <Label text="Max 1-2 Orang" />
+                                <Label text="Max 1-2 Orang" />
                             </children>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
                         </VBox>
                     </children>
                     <VBox.margin>
@@ -102,11 +103,11 @@
                                         <Font name="System Bold" size="18.0" />
                                     </font>
                                 </Label>
-                        <Label text="Max 1-2 Orang" />
+                                <Label text="Max 1-2 Orang" />
                             </children>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
                         </VBox>
                         <VBox fx:id="C305" alignment="CENTER" onMouseClicked="#onC305Clicked" prefHeight="87.0" prefWidth="203.0" style="-fx-background-color: white; -fx-background-radius: 20;" styleClass="bayangan" stylesheets="@style.css">
                             <children>
@@ -114,18 +115,15 @@
                                     <font>
                                         <Font name="System Bold" size="18.0" />
                                     </font>
-                           <VBox.margin>
-                              <Insets />
-                           </VBox.margin>
                                 </Label>
-                        <Label text="Max 1-2 Orang" />
+                                <Label text="Max 1-2 Orang" />
                             </children>
-                     <HBox.margin>
-                        <Insets right="30.0" />
-                     </HBox.margin>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
+                            <HBox.margin>
+                                <Insets right="30.0" />
+                            </HBox.margin>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
                         </VBox>
                         <VBox fx:id="C306" alignment="CENTER" onMouseClicked="#onC306Clicked" prefHeight="87.0" prefWidth="203.0" style="-fx-background-color: white; -fx-background-radius: 20;" styleClass="bayangan" stylesheets="@style.css">
                             <children>
@@ -134,11 +132,11 @@
                                         <Font name="System Bold" size="18.0" />
                                     </font>
                                 </Label>
-                        <Label text="Max 1-2 Orang" />
+                                <Label text="Max 1-2 Orang" />
                             </children>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
                         </VBox>
                     </children>
                     <VBox.margin>
@@ -147,18 +145,19 @@
                 </HBox>
                 <HBox alignment="BOTTOM_CENTER" prefHeight="128.0" prefWidth="754.0">
                     <children>
-                        <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="250.0" styleClass="borderOrange" text="Kembali">
+                        <Button onAction="#onBackClick" mnemonicParsing="false" prefHeight="27.0" prefWidth="250.0" styleClass="borderOrange" text="Kembali">
                             <HBox.margin>
                                 <Insets right="220.0" />
                             </HBox.margin>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
                         </Button>
                         <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="250.0" style="-fx-background-radius: 8;" styleClass="bgWarnaOrange" text="Pesan">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor></Button>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </Button>
                     </children>
                 </HBox>
             </children>

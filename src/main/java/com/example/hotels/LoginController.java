@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -85,6 +86,19 @@ public class LoginController {
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void handleFieldKeyPress(KeyEvent event) {
+        switch (event.getCode()) {
+            case ENTER -> {
+                if (usernameField.isFocused()) {
+                    passwordField.requestFocus(); // Pindah ke passwordField
+                } else if (passwordField.isFocused()) {
+                    onLoginButtonClick(); // Login jika passwordField di-enter
+                }
+            }
         }
     }
 

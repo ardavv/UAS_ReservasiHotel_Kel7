@@ -4,18 +4,35 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 public class ExecutiveController {
 
     @FXML
     private VBox A101, A102, A103, A104;
 
+    @FXML
+    private Label warningLabel; // Tambahkan label untuk menampilkan pesan peringatan
+
     // Variabel untuk menyimpan referensi VBox yang dipilih
     private VBox selectedRoomBox = null;
+
+    // Simpan status booking kamar
+    private final HashMap<String, Boolean> roomStatus = new HashMap<>();
+
+    @FXML
+    public void initialize() {
+        // Tandai kamar yang sudah dibooking
+        roomStatus.put("Kamar A-101", false);
+        roomStatus.put("Kamar A-102", true); // Contoh: kamar ini sudah dibooking
+        roomStatus.put("Kamar A-103", false);
+        roomStatus.put("Kamar A-104", true); // Contoh: kamar ini sudah dibooking
+    }
 
     @FXML
     void onA101Clicked() {
@@ -40,7 +57,7 @@ public class ExecutiveController {
     private void handleRoomClick(VBox roomBox, String roomName) {
         // Reset warna VBox sebelumnya
         if (selectedRoomBox != null) {
-            selectedRoomBox.setStyle("-fx-background-color: white; -fx-background-radius: 20px; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 9, 0.1, 0, 0);");
+            selectedRoomBox.setStyle("-fx-background-color: white; -fx-background-radius: 20px;");
         }
 
         // Ubah warna VBox yang baru dipilih
@@ -48,6 +65,14 @@ public class ExecutiveController {
 
         // Perbarui referensi ke VBox yang dipilih
         selectedRoomBox = roomBox;
+
+        // Periksa status booking kamar
+        if (roomStatus.getOrDefault(roomName, false)) {
+            warningLabel.setText("Kamar sudah dibooking!");
+            warningLabel.setStyle("-fx-text-fill: red;");
+        } else {
+            warningLabel.setText(""); // Kosongkan peringatan jika kamar tersedia
+        }
 
         // Simpan data kamar ke utilitas
         RoomSelection.setSelectedRoom(roomName);

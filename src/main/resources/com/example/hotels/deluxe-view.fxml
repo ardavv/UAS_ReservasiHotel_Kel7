@@ -35,9 +35,10 @@
                         <Insets top="20.0" />
                     </VBox.margin>
                 </Label>
+                <Label fx:id="warningLabel" style="-fx-text-fill: red;" text="" />
                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="754.0">
                     <children>
-                        <VBox fx:id="B201" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#onB201Clicked" prefHeight="87.0" prefWidth="203.0" style="-fx-background-color: white; -fx-background-radius: 20;" styleClass="bayangan" stylesheets="@style.css">
+                        <VBox fx:id="B201" alignment="CENTER" onMouseClicked="#onB201Clicked" prefHeight="87.0" prefWidth="203.0" style="-fx-background-color: white; -fx-background-radius: 20;" styleClass="bayangan" stylesheets="@style.css">
                             <HBox.margin>
                                 <Insets right="40.0" />
                             </HBox.margin>
@@ -53,7 +54,10 @@
                                 <Cursor fx:constant="HAND" />
                             </cursor>
                         </VBox>
-                        <VBox fx:id="B202" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#onB202Clicked" prefHeight="87.0" prefWidth="203.0" style="-fx-background-color: white; -fx-background-radius: 20;" styleClass="bayangan" stylesheets="@style.css">
+                        <VBox fx:id="B202" alignment="CENTER" onMouseClicked="#onB202Clicked" prefHeight="87.0" prefWidth="203.0" style="-fx-background-color: white; -fx-background-radius: 20;" styleClass="bayangan" stylesheets="@style.css">
+                            <HBox.margin>
+                                <Insets right="40.0" />
+                            </HBox.margin>
                             <children>
                                 <Label text="Kamar B-202">
                                     <font>
@@ -62,14 +66,11 @@
                                 </Label>
                                 <Label text="Max 3-4 orang" />
                             </children>
-                            <HBox.margin>
-                                <Insets right="40.0" />
-                            </HBox.margin>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
                         </VBox>
-                        <VBox fx:id="B203" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#onB203Clicked" prefHeight="87.0" prefWidth="203.0" style="-fx-background-color: white; -fx-background-radius: 20;" styleClass="bayangan" stylesheets="@style.css">
+                        <VBox fx:id="B203" alignment="CENTER" onMouseClicked="#onB203Clicked" prefHeight="87.0" prefWidth="203.0" style="-fx-background-color: white; -fx-background-radius: 20;" styleClass="bayangan" stylesheets="@style.css">
                             <children>
                                 <Label text="Kamar B-203">
                                     <font>
@@ -78,9 +79,9 @@
                                 </Label>
                                 <Label text="Max 3-4 orang" />
                             </children>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
                         </VBox>
                     </children>
                     <VBox.margin>
@@ -89,7 +90,7 @@
                 </HBox>
                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="754.0">
                     <children>
-                        <VBox fx:id="B204" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#onB204Clicked" prefHeight="87.0" prefWidth="203.0" style="-fx-background-color: white; -fx-background-radius: 20;" styleClass="bayangan" stylesheets="@style.css">
+                        <VBox fx:id="B204" alignment="CENTER" onMouseClicked="#onB204Clicked" prefHeight="87.0" prefWidth="203.0" style="-fx-background-color: white; -fx-background-radius: 20;" styleClass="bayangan" stylesheets="@style.css">
                             <HBox.margin>
                                 <Insets right="40.0" />
                             </HBox.margin>
@@ -101,11 +102,11 @@
                                 </Label>
                                 <Label text="Max 3-4 orang" />
                             </children>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
                         </VBox>
-                        <VBox fx:id="B205" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#onB205Clicked" prefHeight="87.0" prefWidth="203.0" style="-fx-background-color: white; -fx-background-radius: 20;" styleClass="bayangan" stylesheets="@style.css">
+                        <VBox fx:id="B205" alignment="CENTER" onMouseClicked="#onB205Clicked" prefHeight="87.0" prefWidth="203.0" style="-fx-background-color: white; -fx-background-radius: 20;" styleClass="bayangan" stylesheets="@style.css">
                             <children>
                                 <Label text="Kamar B-205">
                                     <font>
@@ -114,9 +115,9 @@
                                 </Label>
                                 <Label text="Max 3-4 orang" />
                             </children>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
                         </VBox>
                     </children>
                     <VBox.margin>
@@ -125,18 +126,19 @@
                 </HBox>
                 <HBox alignment="BOTTOM_CENTER" prefHeight="109.0" prefWidth="754.0">
                     <children>
-                        <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="250.0" styleClass="borderOrange" text="Kembali">
+                        <Button mnemonicParsing="false" onAction="#onBackClick" prefHeight="27.0" prefWidth="250.0" styleClass="borderOrange" text="Kembali">
                             <HBox.margin>
                                 <Insets right="220.0" />
                             </HBox.margin>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
                         </Button>
                         <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="250.0" style="-fx-background-radius: 8;" styleClass="bgWarnaOrange" text="Pesan">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor></Button>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </Button>
                     </children>
                 </HBox>
             </children>
