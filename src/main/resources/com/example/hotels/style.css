@@ -6,3 +6,27 @@
 .warna{
     -fx-text-fill: #FF9C10;
 }
+
+.bgWarnaOrange{
+    -fx-background-color: #FF9C10;
+}
+.bgWarnaPutih{
+    -fx-background-color: #FFF8EE;
+}
+
+.bayangan{
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 9, 0.1, 0, 0);
+}
+
+.btn{
+    -fx-background-color: #FF9C10;
+}
+.btn:hover{
+    -fx-background-color: #FF9C50;
+}
+
+.borderOrange{
+    -fx-border-color: #FF9C10;
+    -fx-background-color: none;
+    -fx-border-radius: 8px;
+}

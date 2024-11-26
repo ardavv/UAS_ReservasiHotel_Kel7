@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -23,12 +24,22 @@ public class LoginController {
     @FXML
     private Label errorHandle;
 
+    private static String activeUsername;
+    private static String activeEmail;
+
+    public static String getActiveUsername() {
+        return activeUsername;
+    }
+
+    public static String getActiveEmail() {
+        return activeEmail;
+    }
+
     @FXML
     private void onLoginButtonClick() {
         String username = usernameField.getText().trim();
         String password = passwordField.getText();
 
-        // Ambil data pengguna dari RegisterController
         HashMap<String, String> users = RegisterController.getUsers();
 
         if (username.isEmpty() || password.isEmpty()) {
@@ -38,18 +49,36 @@ public class LoginController {
         } else if (!users.get(username).equals(password)) {
             setError("Password salah.");
         } else {
-            setSuccess("Login berhasil!");
+            // Simpan username dan email aktif
+            activeUsername = username;
+            activeEmail = RegisterController.getEmail(username);
+
+            // Lanjutkan ke halaman utama
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("home-view.fxml"));
+                AnchorPane homePage = loader.load();
+
+                // Ambil controller untuk HomePage
+                HomePageController homeController = loader.getController();
+                homeController.setUserDetails(activeUsername, activeEmail); // Kirim data username dan email
+
+                // Tampilkan scene baru
+                Stage stage = (Stage) usernameField.getScene().getWindow();
+                Scene scene = new Scene(homePage);
+                stage.setScene(scene);
+                stage.setTitle("Home Page");
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
     @FXML
     private void handleHyperlinkToRegister(ActionEvent event) {
         try {
-            // Muat file FXML untuk register-view
-            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("register-view.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("register-view.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
-
-            // Ambil stage utama dan ubah scene-nya
             Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
             stage.setTitle("Register");
