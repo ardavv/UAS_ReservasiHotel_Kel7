@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="533.0" prefWidth="754.0" styleClass="bgWarnaPutih" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotels.StandartController">
+    <children>
+        <VBox alignment="TOP_CENTER" prefHeight="533.0" prefWidth="754.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <HBox alignment="CENTER" prefHeight="40.0" prefWidth="754.0" stylesheets="@style.css">
+                    <styleClass>
+                        <String fx:value="bgAuth" />
+                        <String fx:value="bgWarnaOrange" />
+                    </styleClass>
+                    <children>
+                        <Label text="Laravel Hotel Standard Room">
+                            <font>
+                                <Font name="Times New Roman Bold" size="17.0" />
+                            </font>
+                        </Label>
+                    </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+                </HBox>
+                <Label text="Pilih ruangan">
+                    <font>
+                        <Font name="System Bold" size="30.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets top="20.0" />
+                    </VBox.margin>
+                </Label>
+                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="754.0">
+                    <children>
+                        <VBox fx:id="C301" alignment="CENTER" onMouseClicked="#onC301Clicked" prefHeight="87.0" prefWidth="203.0" style="-fx-background-color: white; -fx-background-radius: 20;" styleClass="bayangan" stylesheets="@style.css">
+                            <HBox.margin>
+                                <Insets right="30.0" />
+                            </HBox.margin>
+                            <children>
+                                <Label text="Kamar C-301">
+                                    <font>
+                                        <Font name="System Bold" size="18.0" />
+                                    </font>
+                                </Label>
+                        <Label text="Max 1-2 Orang" />
+                            </children>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                        </VBox>
+                        <VBox fx:id="C302" alignment="CENTER" onMouseClicked="#onC302Clicked" prefHeight="87.0" prefWidth="203.0" style="-fx-background-color: white; -fx-background-radius: 20;" styleClass="bayangan" stylesheets="@style.css">
+                            <children>
+                                <Label text="Kamar C-302">
+                                    <font>
+                                        <Font name="System Bold" size="18.0" />
+                                    </font>
+                                </Label>
+                        <Label text="Max 1-2 Orang" />
+                            </children>
+                     <HBox.margin>
+                        <Insets right="30.0" />
+                     </HBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                        </VBox>
+                        <VBox fx:id="C303" alignment="CENTER" onMouseClicked="#onC303Clicked" prefHeight="87.0" prefWidth="203.0" style="-fx-background-color: white; -fx-background-radius: 20;" styleClass="bayangan" stylesheets="@style.css">
+                            <children>
+                                <Label text="Kamar C-303">
+                                    <font>
+                                        <Font name="System Bold" size="18.0" />
+                                    </font>
+                                </Label>
+                        <Label text="Max 1-2 Orang" />
+                            </children>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                        </VBox>
+                    </children>
+                    <VBox.margin>
+                        <Insets top="50.0" />
+                    </VBox.margin>
+                </HBox>
+                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="754.0">
+                    <children>
+                        <VBox fx:id="C304" alignment="CENTER" onMouseClicked="#onC304Clicked" prefHeight="87.0" prefWidth="203.0" style="-fx-background-color: white; -fx-background-radius: 20;" styleClass="bayangan" stylesheets="@style.css">
+                            <HBox.margin>
+                                <Insets right="30.0" />
+                            </HBox.margin>
+                            <children>
+                                <Label text="Kamar C-304">
+                                    <font>
+                                        <Font name="System Bold" size="18.0" />
+                                    </font>
+                                </Label>
+                        <Label text="Max 1-2 Orang" />
+                            </children>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                        </VBox>
+                        <VBox fx:id="C305" alignment="CENTER" onMouseClicked="#onC305Clicked" prefHeight="87.0" prefWidth="203.0" style="-fx-background-color: white; -fx-background-radius: 20;" styleClass="bayangan" stylesheets="@style.css">
+                            <children>
+                                <Label text="Kamar C-305">
+                                    <font>
+                                        <Font name="System Bold" size="18.0" />
+                                    </font>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                                </Label>
+                        <Label text="Max 1-2 Orang" />
+                            </children>
+                     <HBox.margin>
+                        <Insets right="30.0" />
+                     </HBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                        </VBox>
+                        <VBox fx:id="C306" alignment="CENTER" onMouseClicked="#onC306Clicked" prefHeight="87.0" prefWidth="203.0" style="-fx-background-color: white; -fx-background-radius: 20;" styleClass="bayangan" stylesheets="@style.css">
+                            <children>
+                                <Label text="Kamar C-306">
+                                    <font>
+                                        <Font name="System Bold" size="18.0" />
+                                    </font>
+                                </Label>
+                        <Label text="Max 1-2 Orang" />
+                            </children>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                        </VBox>
+                    </children>
+                    <VBox.margin>
+                        <Insets top="20.0" />
+                    </VBox.margin>
+                </HBox>
+                <HBox alignment="BOTTOM_CENTER" prefHeight="128.0" prefWidth="754.0">
+                    <children>
+                        <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="250.0" styleClass="borderOrange" text="Kembali">
+                            <HBox.margin>
+                                <Insets right="220.0" />
+                            </HBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="250.0" style="-fx-background-radius: 8;" styleClass="bgWarnaOrange" text="Pesan">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

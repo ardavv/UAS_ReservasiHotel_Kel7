@@ -13,7 +13,8 @@ import java.util.HashMap;
 public class RegisterController {
 
     // Static HashMap untuk menyimpan data pengguna
-    private static final HashMap<String, String> users = new HashMap<>();
+    private static final HashMap<String, String> users = new HashMap<>(); // Username -> Password
+    private static final HashMap<String, String> emails = new HashMap<>(); // Username -> Email
 
     @FXML
     private TextField usernameField;
@@ -30,8 +31,19 @@ public class RegisterController {
     @FXML
     private Label errorHandle;
 
+    private static String activeUsername;
+
+    public static String getActiveUsername() {
+        return activeUsername;
+    }
+
+    public static void setActiveUsername(String username) {
+        activeUsername = username;
+    }
+
     @FXML
     protected void onRegisterButtonClick() {
+
         String username = usernameField.getText().trim();
         String email = emailField.getText().trim();
         String password = passwordField.getText();
@@ -44,9 +56,13 @@ public class RegisterController {
             setError("Username sudah terdaftar.");
         } else if (!password.equals(confirmPassword)) {
             setError("Password tidak cocok.");
+        } else if (!isValidEmail(email)) {
+            setError("Email tidak valid.");
         } else {
             // Simpan data ke HashMap
             users.put(username, password);
+            emails.put(username, email); // Simpan email berdasarkan username
+            activeUsername = username; // Simpan username yang aktif
             clearFields();
             setSuccess("Registrasi berhasil! Anda dapat login sekarang.");
         }
@@ -86,8 +102,18 @@ public class RegisterController {
         confirmPasswordField.clear();
     }
 
+    // Validasi format email
+    private boolean isValidEmail(String email) {
+        return email.matches("^[A-Za-z0-9+_.-]+@(.+)$");
+    }
+
     // Getter untuk HashMap pengguna
     public static HashMap<String, String> getUsers() {
         return users;
+    }
+
+    // Getter untuk email berdasarkan username
+    public static String getEmail(String username) {
+        return emails.get(username);
     }
 }

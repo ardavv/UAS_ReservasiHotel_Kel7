@@ -17,7 +17,7 @@
     <children>
         <HBox fx:id="containerLogin" alignment="CENTER" layoutX="82.0" layoutY="74.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="466.0" style="-fx-background-color: #FFF8EE; -fx-background-radius: 20px;" AnchorPane.bottomAnchor="76.39999999999998" AnchorPane.leftAnchor="82.0" AnchorPane.rightAnchor="82.0" AnchorPane.topAnchor="74.0">
             <children>
-                <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="383.0" prefWidth="363.0" style="-fx-background-color: #FF9C10; -fx-background-radius: 20px 0px 0px 20px;">
+                <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="383.0" prefWidth="302.0" style="-fx-background-color: #FF9C10; -fx-background-radius: 20px 0px 0px 20px;">
                     <children>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                             <VBox.margin>
@@ -70,7 +70,7 @@
                                 <Insets top="5.0" />
                             </VBox.margin>
                         </PasswordField>
-                        <Button maxHeight="-Infinity" maxWidth="-Infinity" onAction="#onLoginButtonClick" prefHeight="26.0" prefWidth="199.0" style="-fx-background-color: FF9C10; -fx-background-radius: 8;" text="Login">
+                        <Button onAction="#onLoginButtonClick" prefHeight="26.0" prefWidth="199.0" style="-fx-background-color: FF9C10; -fx-background-radius: 8;" text="Login">
                             <VBox.margin>
                                 <Insets top="25.0" />
                             </VBox.margin>
