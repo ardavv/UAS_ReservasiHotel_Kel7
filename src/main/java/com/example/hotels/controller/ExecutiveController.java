@@ -1,5 +1,6 @@
-package com.example.hotels;
+package com.example.hotels.controller;
 
+import com.example.hotels.database.RoomSelection;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

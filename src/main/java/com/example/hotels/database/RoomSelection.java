@@ -1,4 +1,4 @@
-package com.example.hotels;
+package com.example.hotels.database;
 
 public class RoomSelection {
     private static String selectedRoom;

@@ -1,4 +1,4 @@
-package com.example.hotels;
+package com.example.hotels.database;
 
 public class UserSession {
     private static String username;

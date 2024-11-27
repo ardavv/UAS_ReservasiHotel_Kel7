@@ -1,5 +1,6 @@
-package com.example.hotels;
+package com.example.hotels.controller;
 
+import com.example.hotels.database.RoomSelection;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,57 +12,53 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.HashMap;
 
-public class StandartController {
+public class DeluxeController {
 
     @FXML
-    private VBox C301, C302, C303, C304, C305, C306;
+    private VBox B201, B202, B203, B204, B205;
 
     @FXML
     private Label warningLabel; // Label untuk menampilkan pesan peringatan
 
-    private VBox selectedRoomBox = null; // Referensi ke VBox yang dipilih
+    // Variabel untuk menyimpan referensi VBox yang dipilih
+    private VBox selectedRoomBox = null;
 
-    private final HashMap<String, Boolean> roomStatus = new HashMap<>(); // Status booking kamar
+    // Simpan status booking kamar
+    private final HashMap<String, Boolean> roomStatus = new HashMap<>();
 
     @FXML
     public void initialize() {
-        // Status booking kamar (false = tersedia, true = dibooking)
-        roomStatus.put("Kamar C-301", false);
-        roomStatus.put("Kamar C-302", true); // Kamar ini sudah dibooking
-        roomStatus.put("Kamar C-303", false);
-        roomStatus.put("Kamar C-304", false);
-        roomStatus.put("Kamar C-305", true); // Kamar ini sudah dibooking
-        roomStatus.put("Kamar C-306", false);
+        // Tandai kamar yang sudah dibooking
+        roomStatus.put("Kamar B-201", false); // Kamar ini masih tersedia
+        roomStatus.put("Kamar B-202", true);  // Kamar ini sudah dibooking
+        roomStatus.put("Kamar B-203", false); // Kamar ini masih tersedia
+        roomStatus.put("Kamar B-204", true);  // Kamar ini sudah dibooking
+        roomStatus.put("Kamar B-205", false); // Kamar ini masih tersedia
     }
 
     @FXML
-    void onC301Clicked() {
-        handleRoomClick(C301, "Kamar C-301", "Standard", 200000);
+    void onB201Clicked() {
+        handleRoomClick(B201, "Kamar B-201", "Deluxe", 400000);
     }
 
     @FXML
-    void onC302Clicked() {
-        handleRoomClick(C302, "Kamar C-302", "Standard", 200000);
+    void onB202Clicked() {
+        handleRoomClick(B202, "Kamar B-202", "Deluxe", 400000);
     }
 
     @FXML
-    void onC303Clicked() {
-        handleRoomClick(C303, "Kamar C-303", "Standard", 200000);
+    void onB203Clicked() {
+        handleRoomClick(B203, "Kamar B-203", "Deluxe", 400000);
     }
 
     @FXML
-    void onC304Clicked() {
-        handleRoomClick(C304, "Kamar C-304", "Standard", 200000);
+    void onB204Clicked() {
+        handleRoomClick(B204, "Kamar B-204", "Deluxe", 400000);
     }
 
     @FXML
-    void onC305Clicked() {
-        handleRoomClick(C305, "Kamar C-305", "Standard", 200000);
-    }
-
-    @FXML
-    void onC306Clicked() {
-        handleRoomClick(C306, "Kamar C-306", "Standard", 200000);
+    void onB205Clicked() {
+        handleRoomClick(B205, "Kamar B-205", "Deluxe", 400000);
     }
 
     private void handleRoomClick(VBox roomBox, String roomName, String roomType, int roomPrice) {
@@ -86,6 +83,7 @@ public class StandartController {
 
         // Simpan data kamar ke utilitas RoomSelection
         RoomSelection.setSelectedRoom(roomName, roomType, roomPrice);
+
     }
 
     @FXML

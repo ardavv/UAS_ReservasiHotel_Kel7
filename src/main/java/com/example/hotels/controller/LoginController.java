@@ -1,5 +1,6 @@
-package com.example.hotels;
+package com.example.hotels.controller;
 
+import com.example.hotels.database.UserSession;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -47,7 +48,7 @@ public class LoginController {
 
             // Lanjutkan ke halaman utama
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("home-view.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/hotels/home-view.fxml"));
                 AnchorPane homePage = loader.load();
 
                 // Ambil controller untuk HomePage
@@ -70,7 +71,7 @@ public class LoginController {
     @FXML
     private void handleHyperlinkToRegister(ActionEvent event) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("register-view.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/hotels/register-view.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
             Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);

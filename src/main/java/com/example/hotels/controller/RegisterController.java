@@ -1,5 +1,6 @@
-package com.example.hotels;
+package com.example.hotels.controller;
 
+import com.example.hotels.database.UserSession;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -82,7 +83,7 @@ public class RegisterController {
     @FXML
     private void handleHyperlinkToLogin(ActionEvent event) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("login-view.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/hotels/login-view.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
             Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
