@@ -88,11 +88,11 @@ public class RegisterController {
     @FXML
     private void handleHyperlinkToLogin(ActionEvent event) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login-view.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("login-view.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
             Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
-            stage.setTitle("Login Page");
+            stage.setTitle("Login");
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
