@@ -34,9 +34,6 @@
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
             </Label>
             <Label fx:id="warningLabel" style="-fx-text-fill: red;" text="" />
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="754.0">
@@ -121,10 +118,11 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="250.0" style="-fx-background-radius: 8;" styleClass="bgWarnaOrange" text="Pesan">
+                  <Button mnemonicParsing="false" onAction="#onPesanClicked" prefHeight="26.0" prefWidth="250.0" style="-fx-background-radius: 8;" styleClass="bgWarnaOrange" text="Pesan">
                      <cursor>
                         <Cursor fx:constant="HAND" />
-                     </cursor></Button>
+                     </cursor>
+                  </Button>
                </children>
             </HBox>
          </children>

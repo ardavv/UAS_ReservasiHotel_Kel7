@@ -25,17 +25,7 @@ public class LoginController {
     @FXML
     private Label errorHandle;
 
-    private static String activeUsername;
-    private static String activeEmail;
-
-    public static String getActiveUsername() {
-        return activeUsername;
-    }
-
-    public static String getActiveEmail() {
-        return activeEmail;
-    }
-
+    // LoginController.java
     @FXML
     private void onLoginButtonClick() {
         String username = usernameField.getText().trim();
@@ -50,9 +40,10 @@ public class LoginController {
         } else if (!users.get(username).equals(password)) {
             setError("Password salah.");
         } else {
-            // Simpan username dan email aktif
-            activeUsername = username;
-            activeEmail = RegisterController.getEmail(username);
+            // Simpan username dan email aktif ke UserSession
+            String activeEmail = RegisterController.getEmail(username);
+            UserSession.setUsername(username);
+            UserSession.setEmail(activeEmail);
 
             // Lanjutkan ke halaman utama
             try {
@@ -61,7 +52,7 @@ public class LoginController {
 
                 // Ambil controller untuk HomePage
                 HomePageController homeController = loader.getController();
-                homeController.setUserDetails(activeUsername, activeEmail); // Kirim data username dan email
+                homeController.setUserDetails();  // Tidak perlu mengirim parameter, karena sudah menggunakan UserSession
 
                 // Tampilkan scene baru
                 Stage stage = (Stage) usernameField.getScene().getWindow();
@@ -74,6 +65,7 @@ public class LoginController {
             }
         }
     }
+
 
     @FXML
     private void handleHyperlinkToRegister(ActionEvent event) {

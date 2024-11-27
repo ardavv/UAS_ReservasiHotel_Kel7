@@ -32,16 +32,6 @@ public class RegisterController {
     @FXML
     private Label errorHandle;
 
-    private static String activeUsername;
-
-    public static String getActiveUsername() {
-        return activeUsername;
-    }
-
-    public static void setActiveUsername(String username) {
-        activeUsername = username;
-    }
-
     @FXML
     protected void onRegisterButtonClick() {
         handleRegistration();
@@ -79,7 +69,11 @@ public class RegisterController {
         } else {
             users.put(username, password);
             emails.put(username, email);
-            activeUsername = username;
+
+            // Simpan username dan email ke dalam UserSession
+            UserSession.setUsername(username);
+            UserSession.setEmail(email);
+
             clearFields();
             setSuccess("Registrasi berhasil! Anda dapat login sekarang.");
         }
@@ -88,7 +82,7 @@ public class RegisterController {
     @FXML
     private void handleHyperlinkToLogin(ActionEvent event) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login-view.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("login-view.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
             Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);

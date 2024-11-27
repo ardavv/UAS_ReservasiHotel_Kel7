@@ -17,44 +17,42 @@ public class ExecutiveController {
     private VBox A101, A102, A103, A104;
 
     @FXML
-    private Label warningLabel; // Tambahkan label untuk menampilkan pesan peringatan
+    private Label warningLabel; // Label untuk menampilkan pesan peringatan
 
-    // Variabel untuk menyimpan referensi VBox yang dipilih
-    private VBox selectedRoomBox = null;
+    private VBox selectedRoomBox = null; // Referensi ke VBox yang dipilih
 
-    // Simpan status booking kamar
-    private final HashMap<String, Boolean> roomStatus = new HashMap<>();
+    private final HashMap<String, Boolean> roomStatus = new HashMap<>(); // Status booking kamar
 
     @FXML
     public void initialize() {
-        // Tandai kamar yang sudah dibooking
+        // Status booking kamar (false = tersedia, true = dibooking)
         roomStatus.put("Kamar A-101", false);
-        roomStatus.put("Kamar A-102", true); // Contoh: kamar ini sudah dibooking
+        roomStatus.put("Kamar A-102", true); // Kamar ini sudah dibooking
         roomStatus.put("Kamar A-103", false);
-        roomStatus.put("Kamar A-104", true); // Contoh: kamar ini sudah dibooking
+        roomStatus.put("Kamar A-104", true); // Kamar ini sudah dibooking
     }
 
     @FXML
     void onA101Clicked() {
-        handleRoomClick(A101, "Kamar A-101");
+        handleRoomClick(A101, "Kamar A-101", "Executive", 600000);
     }
 
     @FXML
     void onA102Clicked() {
-        handleRoomClick(A102, "Kamar A-102");
+        handleRoomClick(A102, "Kamar A-102", "Executive", 650000);
     }
 
     @FXML
     void onA103Clicked() {
-        handleRoomClick(A103, "Kamar A-103");
+        handleRoomClick(A103, "Kamar A-103", "Executive", 700000);
     }
 
     @FXML
     void onA104Clicked() {
-        handleRoomClick(A104, "Kamar A-104");
+        handleRoomClick(A104, "Kamar A-104", "Executive", 750000);
     }
 
-    private void handleRoomClick(VBox roomBox, String roomName) {
+    private void handleRoomClick(VBox roomBox, String roomName, String roomType, int roomPrice) {
         // Reset warna VBox sebelumnya
         if (selectedRoomBox != null) {
             selectedRoomBox.setStyle("-fx-background-color: white; -fx-background-radius: 20px;");
@@ -74,18 +72,35 @@ public class ExecutiveController {
             warningLabel.setText(""); // Kosongkan peringatan jika kamar tersedia
         }
 
-        // Simpan data kamar ke utilitas
-        RoomSelection.setSelectedRoom(roomName);
+        // Simpan data kamar ke utilitas RoomSelection
+        RoomSelection.setSelectedRoom(roomName, roomType, roomPrice);
 
-        // Debug: Tampilkan data kamar yang tersimpan
-        System.out.println("Selected Room: " + RoomSelection.getSelectedRoom());
+    }
+
+    @FXML
+    private void onPesanClicked(ActionEvent event) {
+        // Output informasi kamar saat tombol "Pesan" diklik
+        System.out.println("Room Type: " + RoomSelection.getRoomType());
+        System.out.println("Room Number: " + RoomSelection.getSelectedRoom());
+        System.out.println("Room Price: " + RoomSelection.getRoomPrice());
+
+        // Anda bisa melanjutkan dengan proses pemesanan atau tampilan konfirmasi
     }
 
     @FXML
     private void onBackClick(ActionEvent event) {
         try {
+            // Muat halaman home-view
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/hotels/home-view.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
+
+            // Ambil controller HomePage
+            HomePageController homeController = fxmlLoader.getController();
+
+            // Set data user (username dan email) yang sudah disimpan di UserSession
+            homeController.setUserDetails(); // Memanggil setUserDetails() yang tidak membutuhkan parameter
+
+            // Tampilkan halaman utama
             Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
             stage.setTitle("Home Room");

@@ -10,8 +10,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class HomePageController {
+
     @FXML
     public Button pilihExecutiveButton;
     @FXML
@@ -25,71 +28,61 @@ public class HomePageController {
     @FXML
     private Label emailLabel;
 
-    // Method for navigating to Executive Room page
-    @FXML
-    private void onExecutiveRoomClick(ActionEvent event) {
+    private List<Room> rooms;
+
+    // Initialize the list of rooms
+    public void initialize() {
+        rooms = new ArrayList<>();
+        rooms.add(new Room("pilihExecutiveButton", "Executive Room", "/image/executive.png",
+                "Kamar mewah dengan ruang tamu terpisah, fasilitas eksklusif, dan kenyamanan maksimal bagi tamu istimewa.",
+                "/com/example/hotels/executive-view.fxml", 600000)); // harga 600rb
+        rooms.add(new Room("pilihDeluxeButton", "Deluxe Room", "/image/deluxe.png",
+                "Kamar mewah dengan ruang tamu terpisah, fasilitas eksklusif, dan kenyamanan maksimal bagi tamu istimewa.",
+                "/com/example/hotels/deluxe-view.fxml", 400000)); // harga 400rb
+        rooms.add(new Room("pilihStandartButton", "Standard Room", "/image/standard.png",
+                "Kamar standar dengan kenyamanan yang memadai dan harga yang lebih terjangkau.",
+                "/com/example/hotels/standart-view.fxml", 200000)); // harga 200rb
+    }
+
+    // General method to load a room page dynamically
+    private void loadRoomPage(ActionEvent event, Room room) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/hotels/executive-view.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(room.getFxmlFile()));
             Scene scene = new Scene(fxmlLoader.load());
             Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
-            stage.setTitle("Executive Room");
+            stage.setTitle(room.getName());
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    // Method for navigating to Deluxe Room page
+    // Method for navigating to the selected room page
     @FXML
-    private void onDeluxeRoomClick(ActionEvent event) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/hotels/deluxe-view.fxml"));
-            Scene scene = new Scene(fxmlLoader.load());
-            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
-            stage.setTitle("Deluxe Room");
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
+    private void onRoomClick(ActionEvent event) {
+        Button sourceButton = (Button) event.getSource();
+        Room selectedRoom = null;
+
+        // Find the room based on the button's fx:id
+        for (Room room : rooms) {
+            if (room.getId().equalsIgnoreCase(sourceButton.getId())) {
+                selectedRoom = room;
+                break;
+            }
+        }
+
+        if (selectedRoom != null) {
+            loadRoomPage(event, selectedRoom);
         }
     }
-
-    // Method for navigating to Standard Room page
-    @FXML
-    private void onStandardRoomClick(ActionEvent event) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/hotels/standart-view.fxml"));
-            Scene scene = new Scene(fxmlLoader.load());
-            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
-            stage.setTitle("Standart Room");
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    // General method to load a room page with its specific title
-//    private void loadRoomPage(ActionEvent event, String fxmlFile, String pageTitle) {
-//        try {
-//            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(""));
-//            AnchorPane roomPage = fxmlLoader.load();
-//
-//            // Set up the scene and stage for the new page
-//            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-//            Scene scene = new Scene(roomPage);
-//            stage.setScene(scene);
-//            stage.setTitle(pageTitle);
-//            stage.show();
-//        } catch (IOException e) {
-//            System.err.println("Failed to load " + fxmlFile);
-//            e.printStackTrace();
-//        }
-//    }
 
     // Method to set user details
-    public void setUserDetails(String username, String email) {
+    // HomePageController.java
+    public void setUserDetails() {
+        String username = UserSession.getUsername();
+        String email = UserSession.getEmail();
+
         if (username != null && !username.isEmpty()) {
             usernameLabel.setText(" " + username + "!");
         } else {
@@ -102,6 +95,5 @@ public class HomePageController {
             emailLabel.setText("Not available");
         }
     }
-
 
 }

@@ -17,56 +17,54 @@ public class StandartController {
     private VBox C301, C302, C303, C304, C305, C306;
 
     @FXML
-    private Label warningLabel; // Tambahkan label untuk menampilkan pesan peringatan
+    private Label warningLabel; // Label untuk menampilkan pesan peringatan
 
-    // Variabel untuk menyimpan referensi VBox yang dipilih
-    private VBox selectedRoomBox = null;
+    private VBox selectedRoomBox = null; // Referensi ke VBox yang dipilih
 
-    // Simpan status booking kamar
-    private final HashMap<String, Boolean> roomStatus = new HashMap<>();
+    private final HashMap<String, Boolean> roomStatus = new HashMap<>(); // Status booking kamar
 
     @FXML
     public void initialize() {
-        // Tandai kamar yang sudah dibooking
+        // Status booking kamar (false = tersedia, true = dibooking)
         roomStatus.put("Kamar C-301", false);
-        roomStatus.put("Kamar C-302", true); // Contoh: kamar ini sudah dibooking
+        roomStatus.put("Kamar C-302", true); // Kamar ini sudah dibooking
         roomStatus.put("Kamar C-303", false);
         roomStatus.put("Kamar C-304", false);
-        roomStatus.put("Kamar C-305", true); // Contoh: kamar ini sudah dibooking
+        roomStatus.put("Kamar C-305", true); // Kamar ini sudah dibooking
         roomStatus.put("Kamar C-306", false);
     }
 
     @FXML
     void onC301Clicked() {
-        handleRoomClick(C301, "Kamar C-301");
+        handleRoomClick(C301, "Kamar C-301", "Standard", 300000);
     }
 
     @FXML
     void onC302Clicked() {
-        handleRoomClick(C302, "Kamar C-302");
+        handleRoomClick(C302, "Kamar C-302", "Standard", 350000);
     }
 
     @FXML
     void onC303Clicked() {
-        handleRoomClick(C303, "Kamar C-303");
+        handleRoomClick(C303, "Kamar C-303", "Standard", 400000);
     }
 
     @FXML
     void onC304Clicked() {
-        handleRoomClick(C304, "Kamar C-304");
+        handleRoomClick(C304, "Kamar C-304", "Standard", 450000);
     }
 
     @FXML
     void onC305Clicked() {
-        handleRoomClick(C305, "Kamar C-305");
+        handleRoomClick(C305, "Kamar C-305", "Standard", 500000);
     }
 
     @FXML
     void onC306Clicked() {
-        handleRoomClick(C306, "Kamar C-306");
+        handleRoomClick(C306, "Kamar C-306", "Standard", 550000);
     }
 
-    private void handleRoomClick(VBox roomBox, String roomName) {
+    private void handleRoomClick(VBox roomBox, String roomName, String roomType, int roomPrice) {
         // Reset warna VBox sebelumnya
         if (selectedRoomBox != null) {
             selectedRoomBox.setStyle("-fx-background-color: white; -fx-background-radius: 20px;");
@@ -86,18 +84,35 @@ public class StandartController {
             warningLabel.setText(""); // Kosongkan peringatan jika kamar tersedia
         }
 
-        // Simpan data kamar ke utilitas
-        RoomSelection.setSelectedRoom(roomName);
+        // Simpan data kamar ke utilitas RoomSelection
+        RoomSelection.setSelectedRoom(roomName, roomType, roomPrice);
 
-        // Debug: Tampilkan data kamar yang tersimpan
-        System.out.println("Selected Room: " + RoomSelection.getSelectedRoom());
+    }
+
+    @FXML
+    private void onPesanClicked(ActionEvent event) {
+        // Output informasi kamar saat tombol "Pesan" diklik
+        System.out.println("Room Type: " + RoomSelection.getRoomType());
+        System.out.println("Room Number: " + RoomSelection.getSelectedRoom());
+        System.out.println("Room Price: " + RoomSelection.getRoomPrice());
+
+        // Anda bisa melanjutkan dengan proses pemesanan atau tampilan konfirmasi
     }
 
     @FXML
     private void onBackClick(ActionEvent event) {
         try {
+            // Muat halaman home-view
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/hotels/home-view.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
+
+            // Ambil controller HomePage
+            HomePageController homeController = fxmlLoader.getController();
+
+            // Set data user (username dan email) yang sudah disimpan di UserSession
+            homeController.setUserDetails(); // Memanggil setUserDetails() yang tidak membutuhkan parameter
+
+            // Tampilkan halaman utama
             Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
             stage.setTitle("Home Room");
