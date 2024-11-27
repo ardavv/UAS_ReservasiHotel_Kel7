@@ -37,27 +37,27 @@ public class DeluxeController {
 
     @FXML
     void onB201Clicked() {
-        handleRoomClick(B201, "Kamar B-201", "Deluxe", 600000);
+        handleRoomClick(B201, "Kamar B-201", "Deluxe", 400000);
     }
 
     @FXML
     void onB202Clicked() {
-        handleRoomClick(B202, "Kamar B-202", "Deluxe", 650000);
+        handleRoomClick(B202, "Kamar B-202", "Deluxe", 400000);
     }
 
     @FXML
     void onB203Clicked() {
-        handleRoomClick(B203, "Kamar B-203", "Deluxe", 700000);
+        handleRoomClick(B203, "Kamar B-203", "Deluxe", 400000);
     }
 
     @FXML
     void onB204Clicked() {
-        handleRoomClick(B204, "Kamar B-204", "Deluxe", 750000);
+        handleRoomClick(B204, "Kamar B-204", "Deluxe", 400000);
     }
 
     @FXML
     void onB205Clicked() {
-        handleRoomClick(B205, "Kamar B-205", "Deluxe", 800000);
+        handleRoomClick(B205, "Kamar B-205", "Deluxe", 400000);
     }
 
     private void handleRoomClick(VBox roomBox, String roomName, String roomType, int roomPrice) {
@@ -87,12 +87,21 @@ public class DeluxeController {
 
     @FXML
     private void onPesanClicked(ActionEvent event) {
-        // Output informasi kamar saat tombol "Pesan" diklik
-        System.out.println("Room Type: " + RoomSelection.getRoomType());
-        System.out.println("Room Number: " + RoomSelection.getSelectedRoom());
-        System.out.println("Room Price: " + RoomSelection.getRoomPrice());
+        // Cek apakah kamar sudah dibooking
+        String selectedRoom = RoomSelection.getSelectedRoom();
+        if (roomStatus.getOrDefault(selectedRoom, false)) {
+            warningLabel.setText("Kamu tidak bisa memesannya karena sudah dibooking orang lain.");
+            warningLabel.setStyle("-fx-text-fill: red;");
+        } else {
+            // Pesan kamar berhasil
+            System.out.println("Room Type: " + RoomSelection.getRoomType());
+            System.out.println("Room Number: " + RoomSelection.getSelectedRoom());
+            System.out.println("Room Price: " + RoomSelection.getRoomPrice());
 
-        // Anda bisa melanjutkan dengan proses pemesanan atau tampilan konfirmasi
+            // Di sini bisa ditambahkan proses pemesanan atau tampilan konfirmasi
+            warningLabel.setText("Kamar berhasil dipesan.");
+            warningLabel.setStyle("-fx-text-fill: green;");
+        }
     }
 
     @FXML

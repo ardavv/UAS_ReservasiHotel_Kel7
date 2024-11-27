@@ -36,32 +36,32 @@ public class StandartController {
 
     @FXML
     void onC301Clicked() {
-        handleRoomClick(C301, "Kamar C-301", "Standard", 300000);
+        handleRoomClick(C301, "Kamar C-301", "Standard", 200000);
     }
 
     @FXML
     void onC302Clicked() {
-        handleRoomClick(C302, "Kamar C-302", "Standard", 350000);
+        handleRoomClick(C302, "Kamar C-302", "Standard", 200000);
     }
 
     @FXML
     void onC303Clicked() {
-        handleRoomClick(C303, "Kamar C-303", "Standard", 400000);
+        handleRoomClick(C303, "Kamar C-303", "Standard", 200000);
     }
 
     @FXML
     void onC304Clicked() {
-        handleRoomClick(C304, "Kamar C-304", "Standard", 450000);
+        handleRoomClick(C304, "Kamar C-304", "Standard", 200000);
     }
 
     @FXML
     void onC305Clicked() {
-        handleRoomClick(C305, "Kamar C-305", "Standard", 500000);
+        handleRoomClick(C305, "Kamar C-305", "Standard", 200000);
     }
 
     @FXML
     void onC306Clicked() {
-        handleRoomClick(C306, "Kamar C-306", "Standard", 550000);
+        handleRoomClick(C306, "Kamar C-306", "Standard", 200000);
     }
 
     private void handleRoomClick(VBox roomBox, String roomName, String roomType, int roomPrice) {
@@ -86,17 +86,25 @@ public class StandartController {
 
         // Simpan data kamar ke utilitas RoomSelection
         RoomSelection.setSelectedRoom(roomName, roomType, roomPrice);
-
     }
 
     @FXML
     private void onPesanClicked(ActionEvent event) {
-        // Output informasi kamar saat tombol "Pesan" diklik
-        System.out.println("Room Type: " + RoomSelection.getRoomType());
-        System.out.println("Room Number: " + RoomSelection.getSelectedRoom());
-        System.out.println("Room Price: " + RoomSelection.getRoomPrice());
+        // Cek apakah kamar sudah dibooking
+        String selectedRoom = RoomSelection.getSelectedRoom();
+        if (roomStatus.getOrDefault(selectedRoom, false)) {
+            warningLabel.setText("Kamu tidak bisa memesannya karena sudah dibooking orang lain.");
+            warningLabel.setStyle("-fx-text-fill: red;");
+        } else {
+            // Pesan kamar berhasil
+            System.out.println("Room Type: " + RoomSelection.getRoomType());
+            System.out.println("Room Number: " + RoomSelection.getSelectedRoom());
+            System.out.println("Room Price: " + RoomSelection.getRoomPrice());
 
-        // Anda bisa melanjutkan dengan proses pemesanan atau tampilan konfirmasi
+            // Di sini bisa ditambahkan proses pemesanan atau tampilan konfirmasi
+            warningLabel.setText("Kamar berhasil dipesan.");
+            warningLabel.setStyle("-fx-text-fill: green;");
+        }
     }
 
     @FXML

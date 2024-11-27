@@ -39,17 +39,17 @@ public class ExecutiveController {
 
     @FXML
     void onA102Clicked() {
-        handleRoomClick(A102, "Kamar A-102", "Executive", 650000);
+        handleRoomClick(A102, "Kamar A-102", "Executive", 600000);
     }
 
     @FXML
     void onA103Clicked() {
-        handleRoomClick(A103, "Kamar A-103", "Executive", 700000);
+        handleRoomClick(A103, "Kamar A-103", "Executive", 600000);
     }
 
     @FXML
     void onA104Clicked() {
-        handleRoomClick(A104, "Kamar A-104", "Executive", 750000);
+        handleRoomClick(A104, "Kamar A-104", "Executive", 600000);
     }
 
     private void handleRoomClick(VBox roomBox, String roomName, String roomType, int roomPrice) {
@@ -74,17 +74,25 @@ public class ExecutiveController {
 
         // Simpan data kamar ke utilitas RoomSelection
         RoomSelection.setSelectedRoom(roomName, roomType, roomPrice);
-
     }
 
     @FXML
     private void onPesanClicked(ActionEvent event) {
-        // Output informasi kamar saat tombol "Pesan" diklik
-        System.out.println("Room Type: " + RoomSelection.getRoomType());
-        System.out.println("Room Number: " + RoomSelection.getSelectedRoom());
-        System.out.println("Room Price: " + RoomSelection.getRoomPrice());
+        // Cek apakah kamar sudah dibooking
+        String selectedRoom = RoomSelection.getSelectedRoom();
+        if (roomStatus.getOrDefault(selectedRoom, false)) {
+            warningLabel.setText("Kamu tidak bisa memesannya karena sudah dibooking orang lain.");
+            warningLabel.setStyle("-fx-text-fill: red;");
+        } else {
+            // Pesan kamar berhasil
+            System.out.println("Room Type: " + RoomSelection.getRoomType());
+            System.out.println("Room Number: " + RoomSelection.getSelectedRoom());
+            System.out.println("Room Price: " + RoomSelection.getRoomPrice());
 
-        // Anda bisa melanjutkan dengan proses pemesanan atau tampilan konfirmasi
+            // Di sini bisa ditambahkan proses pemesanan atau tampilan konfirmasi
+            warningLabel.setText("Kamar berhasil dipesan.");
+            warningLabel.setStyle("-fx-text-fill: green;");
+        }
     }
 
     @FXML
