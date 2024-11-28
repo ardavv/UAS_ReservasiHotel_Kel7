@@ -118,7 +118,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#onPesanClicked" prefHeight="26.0" prefWidth="250.0" style="-fx-background-radius: 8;" styleClass="bgWarnaOrange" text="Pesan">
+                  <Button fx:id="pesanExec" mnemonicParsing="false" onAction="#onPesanClicked" prefHeight="26.0" prefWidth="250.0" style="-fx-background-radius: 8;" styleClass="bgWarnaOrange" text="Pesan">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>

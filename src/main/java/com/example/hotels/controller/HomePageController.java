@@ -43,6 +43,8 @@ public class HomePageController {
         rooms.add(new Room("pilihStandartButton", "Standard Room", "/image/standard.png",
                 "Kamar standar dengan kenyamanan yang memadai dan harga yang lebih terjangkau.",
                 "/com/example/hotels/standart-view.fxml", 200000)); // harga 200rb
+
+        setUserDetails();
     }
 
     // General method to load a room page dynamically
@@ -57,6 +59,7 @@ public class HomePageController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 
     // Method for navigating to the selected room page
@@ -83,6 +86,7 @@ public class HomePageController {
     public void setUserDetails() {
         String username = UserSession.getUsername();
         String email = UserSession.getEmail();
+        System.out.println(UserSession.getUsername());
 
         if (username != null && !username.isEmpty()) {
             usernameLabel.setText(" " + username + "!");

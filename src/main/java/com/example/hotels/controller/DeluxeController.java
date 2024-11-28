@@ -102,6 +102,20 @@ public class DeluxeController {
             // Di sini bisa ditambahkan proses pemesanan atau tampilan konfirmasi
             warningLabel.setText("Kamar berhasil dipesan.");
             warningLabel.setStyle("-fx-text-fill: green;");
+
+            // switch screen untuk manjutkan ke halaman pengisian data pemesan
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/hotels/formulir-view.fxml"));
+                Scene scene = new Scene(fxmlLoader.load());
+
+                // Ambil stage saat ini dan ubah scene-nya
+                Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.setTitle("Isi Data Pemesan");
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -115,8 +129,7 @@ public class DeluxeController {
             // Ambil controller HomePage
             HomePageController homeController = fxmlLoader.getController();
 
-            // Set data user (username dan email) yang sudah disimpan di UserSession
-            homeController.setUserDetails(); // Memanggil setUserDetails() yang tidak membutuhkan parameter
+
 
             // Tampilkan halaman utama
             Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();

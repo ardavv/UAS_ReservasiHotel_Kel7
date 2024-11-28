@@ -51,9 +51,7 @@ public class LoginController {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/hotels/home-view.fxml"));
                 AnchorPane homePage = loader.load();
 
-                // Ambil controller untuk HomePage
-                HomePageController homeController = loader.getController();
-                homeController.setUserDetails();  // Tidak perlu mengirim parameter, karena sudah menggunakan UserSession
+
 
                 // Tampilkan scene baru
                 Stage stage = (Stage) usernameField.getScene().getWindow();
